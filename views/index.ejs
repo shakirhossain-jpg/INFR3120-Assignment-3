@@ -3,9 +3,36 @@
   <head>
     <title><%= title %></title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/@fortawesome/fontawesome-free/css/all.min.css"/>
+    <script src="bootstrap/dist/js/bootstrap.min.js"></script>
   </head>
   <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+    <%- include('header') %>
+    <div class="row g-4 align-items-start">
+        <!-- Left Box Container -->
+        <div class="col-12 col-lg-3">
+          <div class="p-4 rounded shadow-sm border text-center bg-white">
+            <div class="mb-3 text-dark">
+              <i class="fa-solid fa-utensils fa-2x" aria-hidden="true"></i>
+            </div>
+
+            <h1 class="h3 fw-bold mb-2">Meal Plan Directory</h1>
+            <p class="text-muted small mb-4">
+              Add meals for Breakfast, Lunch, Dinner and Snacks towards your weekly dietary goals
+            </p>
+
+            <!-- Buttons for Add/Delete plans-->
+            <div class="d-flex flex-wrap justify-content-center gap-2">
+              <a href="/addMeal" class="btn btn-dark px-3">
+                <i class="fa-solid fa-plus me-1" aria-hidden="true"></i>Add Meal Plan
+              </a>
+              <a href="/" class="btn btn-outline-dark px-3">
+                <i class="fa-solid fa-trash me-1" aria-hidden="true"></i>Delete Meal Plan
+              </a>
+            </div>
+          </div>
+        </div>
+
   </body>
 </html>

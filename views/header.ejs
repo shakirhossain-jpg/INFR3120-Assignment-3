@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/@fortawesome/fontawesome-free/css/all.min.css"/>
+    <script src="bootstrap/dist/js/bootstrap.min.js"></script>
+  </head>
+  <!-- Universal Header shared across all pages with nav bar that leads to other ejs page views-->
+  <body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/"> <i class="fa-solid fa-kitchen-set"></i> Shak's Skillet</a>
+        <!--Navbar collapse button for dropdown menu option showing links to other pages -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <% if(title== "Home") {%>
+              <a class="nav-link active" aria-current="page" href="/"><i class="fa-solid fa-house fa-lg"></i> Home</a>
+              <% } else { %> 
+              <a class="nav-link" aria-current="page" href="/"><i class="fa-solid fa-house fa-lg"></i> Home</a>
+              <% } %>
+            </li>
+            </ul>
+        </div>
+      </div>
+    </nav>

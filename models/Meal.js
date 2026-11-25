@@ -1,4 +1,4 @@
-const { default: mongoose, Collection} = require("mongoose");
+const { default: mongoose, Collection } = require("mongoose");
 
 let mealPlanModel = mongoose.Schema({
     day: String,
