@@ -9,6 +9,93 @@
   </head>
   <body>
     <%- include('header') %>
-    
+    <!--Container with each input, centered in page-->
+    <div class="container" style="min-height: 82vh;">
+        <div class="row justify-content-center my-4">
+            <div class = "col-md-8 col-lg-6">
+                <h1 class="mb-3">Add Meal Plan</h1>
+                <p class="text-muted mb-4">Fill out the form to save meals
+                    for a day in the week
+                </p>
+
+                <!--Meal Plan form created with Bootstrap form controls-->
+                <form action="/addMeal" method="POST">
+                    <!-- Day of the Week Dropdown Menu-->
+                    <div class="mb-3">
+                        <label for="day" class="form-label">Day of the Week:</label>
+                        <select class="form-select" id="day" name="day" required>
+                            <option value="" selected disabled>Select a day</option>
+                            <option value="Monday">Monday</option>
+                            <option value="Tuesday">Tuesday</option>
+                            <option value="Wednesday">Wednesday</option>
+                            <option value="Thursday">Thursday</option>
+                            <option value="Friday">Friday</option>
+                            <option value="Saturday">Saturday</option>
+                            <option value="Sunday">Sunday</option>
+                        </select>
+                    </div>
+
+                    <!--Breakfast Input Box-->
+                    <div class="mb-3">
+                        <label for="breakfast" class="form-label">Breakfast</label>
+                        <input
+                        type="text"
+                        class="form-control"
+                        id="breakfast"
+                        name="breakfast"
+                        placeholder="e.g., Oatmeal with banana and Greek yogurt"
+                        required
+                        >
+                    </div>
+
+                    <!--Lunch Input Box-->
+                    <div class="mb-3">
+                        <label for="lunch" class="form-label">Lunch</label>
+                        <input
+                        type="text"
+                        class="form-control"
+                        id="lunch"
+                        name="lunch"
+                        placeholder="e.g., Burger and Fries"
+                        required
+                        >
+                    </div>
+
+                    <!--Dinner Input Box-->
+                    <div class="mb-3">
+                        <label for="dinner" class="form-label">Dinner</label>
+                        <input
+                        type="text"
+                        class="form-control"
+                        id="dinner"
+                        name="dinner"
+                        placeholder="e.g., Burger and Fries"
+                        required
+                        >
+                    </div>
+                    <!-- Notes/Description Field-->
+                     <div class="mb-3">
+                        <label for="description" class="form-label">Description/Notes</label>
+                        <input
+                        type="text"
+                        class="form-control"
+                        id="description"
+                        name="description"
+                        placeholder="Add nutrtion notes, calorie goals, and any other details"
+                        required
+                        >
+                    </div>
+
+                    <!--Submit/Reset/Cancel Buttons-->
+                    <div class="d-flex gap-2">
+                        <button type="submit" class="btn btn-dark">Submit</button>
+                        <button type="reset" class="btn btn-outline-secondary">Reset</button>
+                        <a href="/" class="btn btn-outline-dark ms-auto">Canvel</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
   </body>
 </html>
