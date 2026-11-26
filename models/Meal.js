@@ -5,10 +5,10 @@ let mealPlanModel = mongoose.Schema({
     breakfast: String,
     lunch: String,
     dinner: String,
-    snack: String, 
     description: String,
 },
 {
-    Collection:"books"
+    Collection:"mealPlans"
 })
+
 module.exports=mongoose.model('meals', mealPlanModel)
