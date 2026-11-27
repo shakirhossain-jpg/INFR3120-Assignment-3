@@ -1,13 +1,22 @@
+
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+var logger = require('morgan')
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
 var app = express();
+
+/*Mongoose connections from dotenv*/
+require('dotenv').config();
+const mongoose = require('mongoose');
+
+mongoose.connect(process.env.MONGO_URI)
+  .try(() => console.log('Connected to MongoDB'))
+  .catch((err) => console.error('MongoDB Connection error;', err))
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

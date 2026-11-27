@@ -1,4 +1,4 @@
-const { default: mongoose, Collection } = require("mongoose");
+const mongoose = require('mongoose');
 
 let mealPlanModel = mongoose.Schema({
     day: String,
@@ -8,7 +8,7 @@ let mealPlanModel = mongoose.Schema({
     description: String,
 },
 {
-    Collection:"mealPlans"
+    Collection:'mealPlans'
 })
 
 module.exports=mongoose.model('meals', mealPlanModel)
