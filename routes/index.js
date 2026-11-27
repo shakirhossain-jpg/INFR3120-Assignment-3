@@ -46,28 +46,16 @@ router.post('/addMeal', async function(req, res, next){
   }
 })
 
-/* UPDATE: Get edit meal form*/
-router.get('/editMeal/:id', async function (req, res, next) {
-  try {
-    const mealPlan = await MealPlan.findById(req.param.id);
-    if(!mealPlan) {
-      return res.redirect('/');
-    }
-    res.render('editMeal', {
-      title: 'Edit Meal Plan',
-      mealPlan: mealPlan
-    });
-  } catch (err) {
-    console.error(err);
-    res.redirect('/');
-  }
+/* UPDATE: Get edit meal page*/
+router.get('/editMeal', async function (req, res, next) {
+  res.render('editMeal', { title: 'Edit Meal Plan'});
 });
 
-/*UPDATE: Post changes to existing Meal Plan by ID*/
+/*UPDATE: Post Edit meal submission - replace data for selected day*/
 router.post('/editMeal/:id', async function(req, res, next) {
   try {
-    await MealPlan.findByIdAndUpdate(
-      req.param.id,
+    const updatedMeal = await MealPlan.findOneAndUpdate(
+      { day: req.body.day },
       {
         day: req.body.day,
         breakfast: req.body.breakfast,
@@ -75,12 +63,23 @@ router.post('/editMeal/:id', async function(req, res, next) {
         dinner: req.body.dinner,
         description: req.body.description
       },
-      {runValidators: true}
+      {new: true, runValidators: true}
     );
+
+    if(!updatedMeal) {
+      return res.render('editMeal', {
+        title: 'Edit Meal Plan',
+        error: 'No meal plan found for ${req.body.day}. Add one for it, or pick another day'
+      });
+    }
+
     res.redirect('/');
   } catch (err) {
     console.error(err);
-    res.redirect('/');
+    res.render('editMeal', {
+      title: 'Edit Meal Plan',
+      error: 'Error updating meal plan in database'
+    });
   }
 });
 
