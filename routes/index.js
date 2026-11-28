@@ -52,7 +52,7 @@ router.get('/editMeal', async function (req, res, next) {
 });
 
 /*UPDATE: Post Edit meal submission - replace data for selected day*/
-router.post('/editMeal/:id', async function(req, res, next) {
+router.post('/editMeal', async function(req, res, next) {
   try {
     const updatedMeal = await MealPlan.findOneAndUpdate(
       { day: req.body.day },
@@ -69,7 +69,7 @@ router.post('/editMeal/:id', async function(req, res, next) {
     if(!updatedMeal) {
       return res.render('editMeal', {
         title: 'Edit Meal Plan',
-        error: 'No meal plan found for ${req.body.day}. Add one for it, or pick another day'
+        error: `No meal plan found for ${req.body.day}. Add one for it, or pick another day`
       });
     }
 
@@ -86,7 +86,7 @@ router.post('/editMeal/:id', async function(req, res, next) {
 /*DELETE: POST/DELETE Meal Plan by ID*/
 router.post('/deleteMeal/:id', async function(req, res, next) {
   try {
-    await MealPlan.findByIdandDelete(req.param.id);
+    await MealPlan.findByIdAndDelete(req.params.id);
     res.redirect('/');
   } catch (err) {
     console.error(err);

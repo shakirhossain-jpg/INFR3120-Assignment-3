@@ -8,7 +8,7 @@ let mealPlanModel = mongoose.Schema({
     description: String,
 },
 {
-    Collection:'mealPlans'
+    collection:'mealPlans'
 })
 
 module.exports=mongoose.model('meals', mealPlanModel)
